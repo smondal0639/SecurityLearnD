@@ -21,7 +21,12 @@ public class UserController {
     @PostMapping("/addnew")
     public ResponseEntity<Users> createNewUser(@RequestBody Users user){
 
-       Users createdUser = userService.createUser(user);
-        return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);
+        try {
+            Users createdUser = userService.createUser(user);
+            return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);
+        }
+        finally {
+            System.out.println("code running");
+        }
     }
 }
